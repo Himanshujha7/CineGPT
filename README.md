@@ -1,6 +1,11 @@
 # CineGPT
 
 - Configured Tailwind css
+- header
+- login form
+- sign up form
+
+
 
 # Features to build
 (Logged out)
