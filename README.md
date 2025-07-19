@@ -3,8 +3,11 @@
 - Configured Tailwind css
 - header
 - login form
+- routing
 - sign up form
-
+- form validation
+- configured react-hook-form
+- validated input fields
 
 
 # Features to build
