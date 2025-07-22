@@ -8,6 +8,11 @@
 - form validation
 - configured react-hook-form
 - validated input fields
+- Firebase Auth and Backend setup
+- Authentication/ sign up user / Sign in User
+- redux store setup( npm i -D @reduxjs/toolkit && npm i react-redux)
+
+-
 
 
 # Features to build
