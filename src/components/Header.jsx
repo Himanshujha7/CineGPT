@@ -18,7 +18,6 @@ const Header = () => {
       // Sign-out successful.
       dispatch(removeUser());
       navigate('/');
-      console.log("Sign out successful");
       
 
     }).catch((error) => {
