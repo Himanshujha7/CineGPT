@@ -12,7 +12,8 @@
 - Authentication/ sign up user / Sign in User
 - redux store setup( npm i -D @reduxjs/toolkit && npm i react-redux)
 
--
+-Bugfix : not logged in user can't access browse page now, which they could access earlier.
+
 
 
 # Features to build

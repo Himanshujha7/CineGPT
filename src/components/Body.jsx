@@ -1,9 +1,13 @@
-import React from 'react'
+
 import Login from './Login'
 import Browse from './Browse'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
+import { useDispatch } from 'react-redux';
+
 const Body = () => {
+
+    
 
     const appRouter = createBrowserRouter([
         {
@@ -17,9 +21,11 @@ const Body = () => {
         },
 
     ])
+
+    
   return (
     <div>
-        <RouterProvider router={appRouter}/>
+        <RouterProvider router={appRouter}/> 
     </div>
   )
 }

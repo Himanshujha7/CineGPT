@@ -3,10 +3,12 @@ import Header from './Header'
 import { useForm } from 'react-hook-form';
 import {signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../utils/firebase'; 
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const {register,handleSubmit, formState:{errors}} = useForm();
   const [authError, setAuthError] = useState('');
+  const navigate = useNavigate();
 
   const onSubmit = async (data) => {
     
@@ -19,6 +21,7 @@ const Login = () => {
       {
         // Signed up 
         const user = userCredential.user;
+
     
         // ...
         setAuthError('');
@@ -51,6 +54,8 @@ const Login = () => {
         // Signed in 
         const user = userCredential.user;
         // ...
+
+
         setAuthError('');
 
       })
@@ -105,7 +110,7 @@ const Login = () => {
       </div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex py-20 flex-col items-center justify-center w-100 text-white absolute m-32  z-12 mx-auto right-0 left-0 bg-gray-900 opacity-95  p-12 shadow-xl'>
+        className='flex py-20 flex-col rounded-md  w-100 text-white absolute m-32  z-12 mx-auto right-0 left-0 bg-gradient-to-b from-[#10002b] to-gray-900 opacity-95  p-12 shadow-[0px_0px_2px_1px_rgba(88,46,255,0.5)] shadow-3xl'>
         <h1 className='text-2xl font-helonik m-2 font-semibold  text-slate-100'>
             {IsSignInForm ? "Sign In" : "Sign Up"} 
         </h1>
@@ -144,15 +149,15 @@ const Login = () => {
         {errors.password && <span className='text-[#bf0603] my-1 px-2 text-sm font-medium'>{errors.password.message ? "Invalid Password" : "Password is required"}</span>}
         
         {authError && (
-          <div className='text-red-500  border border-red-400 rounded p-3 m-2 w-full text-sm'>
+          <div className='text-red-500  p-3 m-2 w-full text-sm'>
             {authError}
           </div>
         )
         }
-        <button className='p-3  rounded-md mx-2 my-4 bg-[#bf0603] w-full font-helonik font-semibold cursor-pointer'>{IsSignInForm ? "Sign In" : "Sign Up"} </button>
+        <button className='p-3  rounded-md mx-2 my-4 bg-[#bf0603] w-full font-helonik font-semibold cursor-pointer transition duration-200 hover:bg-[#8d0801]'>{IsSignInForm ? "Sign In" : "Sign Up"} </button>
         
         <p className='text-slate-400   flex mx-4 text-sm'>
-          {IsSignInForm ? "New to CineGPT? " : "Already a User? " }  <span onClick={handleClick} className='text-slate-300 font-semibold cursor-pointer underline'> {IsSignInForm ? "Sign Up now." : "Sign In Now."}  </span>
+          {IsSignInForm ? "New to CineGPT? " : "Already a User? " }  <span onClick={handleClick} className='text-slate-300 font-semibold cursor-pointer underline'> {IsSignInForm ? " Sign Up now." : " Sign In Now."}  </span>
         </p>
       </form>
     </div>
