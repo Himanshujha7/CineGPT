@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { addUser, removeUser } from '../utils/userSlice';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../utils/firebase';
+import Dropdown from './Dropdown';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -55,6 +56,7 @@ const Header = () => {
         {user && (
           <div className='absolute right-16 top-8'>
             <button onClick={handleSignout} className='text-white  font-helonik font-semibold text-lg  cursor-pointer transition-all duration-200 z-20 hover:text-[#bf0603]'>Sign Out</button>
+            <Dropdown user={user} onSignOut={handleSignout}/>
           </div>
         )}
         
