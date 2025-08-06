@@ -14,7 +14,9 @@
 
 -Bugfix : not logged in user can't access browse page now, which they could access earlier.
 
-- TMDB API creation 
+- TMDB API creation - register app and get access token
+- get data from tmdb now playng movies api
+ 
 
 
 # Features to build
