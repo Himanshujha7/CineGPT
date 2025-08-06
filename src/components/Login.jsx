@@ -1,29 +1,55 @@
 import React, { useState } from 'react'
 import Header from './Header'
 import { useForm } from 'react-hook-form';
-import {signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+import {signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../utils/firebase'; 
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../utils/userSlice';
 
 const Login = () => {
   const {register,handleSubmit, formState:{errors}} = useForm();
   const [authError, setAuthError] = useState('');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onSubmit = async (data) => {
     
-    const { email, password } = data;
+    const { email, password, name } = data;
     setAuthError('');
     if(!IsSignInForm){
 
-      createUserWithEmailAndPassword(auth, email,password)
-      .then((userCredential) => 
+      createUserWithEmailAndPassword(auth, email, password)
+      .then(async (userCredential) => 
       {
         // Signed up 
         const user = userCredential.user;
-
-    
-        // ...
+        
+        // Update the user's display name if provided
+        if (name) {
+          await updateProfile(user, {
+            displayName: name
+          });
+          // Force refresh the user to get updated profile
+          await user.reload();
+          // Manually trigger auth state change with updated user
+          console.log("Updated user after profile update:", auth.currentUser);
+          
+          // Manually update Redux store with correct displayName
+          dispatch(addUser({
+            uid: user.uid,
+            email: user.email,
+            displayName: name // Use the name from form instead of user.displayName
+          }));
+        } else {
+          // If no name provided, still update store
+          dispatch(addUser({
+            uid: user.uid,
+            email: user.email,
+            displayName: null
+          }));
+        }
+        
         setAuthError('');
       })
       .catch((error) => 

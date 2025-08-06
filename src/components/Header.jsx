@@ -27,9 +27,11 @@ const Header = () => {
     });
   }
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      console.log("Auth state changed - user:", user); // Debug log
       if (user) {
-        const {uid, email, displayName }= user.uid;
+        const {uid, email, displayName } = user;
+        console.log("Extracted user data:", { uid, email, displayName }); // Debug log
           // updating the store
 
         dispatch(addUser({
@@ -42,12 +44,14 @@ const Header = () => {
       else 
       {
         // User is signed out
-         // ...
+        console.log("User signed out"); // Debug log
         dispatch(removeUser());
         navigate('/')
       }
     });
 
+    // Cleanup function to unsubscribe
+    return () => unsubscribe();
   }, [])
   return (
     <div className='w-full flex justify-between absolute h-90 px-16 py-8 bg-gradient-to-b from-black z-10'>
@@ -55,8 +59,8 @@ const Header = () => {
 
         {user && (
           <div className='absolute right-16 top-8'>
-            <button onClick={handleSignout} className='text-white  font-helonik font-semibold text-lg  cursor-pointer transition-all duration-200 z-20 hover:text-[#bf0603]'>Sign Out</button>
-            <Dropdown user={user} onSignOut={handleSignout}/>
+            {/* <button onClick={handleSignout} className='text-white  font-helonik font-semibold text-lg  cursor-pointer transition-all duration-200 z-20 hover:text-[#bf0603]'>Sign Out</button> */}
+            <Dropdown onSignOut={handleSignout}/>
           </div>
         )}
         
