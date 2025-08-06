@@ -14,6 +14,7 @@
 
 -Bugfix : not logged in user can't access browse page now, which they could access earlier.
 
+- TMDB API creation 
 
 
 # Features to build

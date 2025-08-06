@@ -102,13 +102,12 @@ const Login = () => {
     <div>
       <Header/>
       <div className='absolute inset-0 w-full h-full'>
-        {/* <img src='https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg'
-        alt='bgimg'/> */}
         <video loop autoPlay muted className='w-full h-full object-cover '>
           <source src='Bgvideooo.mp4' type='video/mp4'/>
         </video>
       </div>
-      <form
+      <div className='relative z-10 flex items-center justify-center min-h-screen px-4 py-8 md:py-20'>
+        <form
         onSubmit={handleSubmit(onSubmit)}
         className='flex py-20 flex-col rounded-md  w-100 text-white absolute m-32  z-12 mx-auto right-0 left-0 bg-gradient-to-b from-[#10002b] to-gray-900 opacity-95  p-12 shadow-[0px_0px_2px_1px_rgba(88,46,255,0.5)] shadow-3xl'>
         <h1 className='text-2xl font-helonik m-2 font-semibold  text-slate-100'>
@@ -159,7 +158,10 @@ const Login = () => {
         <p className='text-slate-400   flex mx-4 text-sm'>
           {IsSignInForm ? "New to CineGPT? " : "Already a User? " }  <span onClick={handleClick} className='text-slate-300 font-semibold cursor-pointer underline'> {IsSignInForm ? " Sign Up now." : " Sign In Now."}  </span>
         </p>
-      </form>
+        </form>
+
+      </div>
+      
     </div>
   )
 }
@@ -167,3 +169,212 @@ const Login = () => {
 
 export default Login;
 
+
+// import React, { useState } from 'react'
+// import Header from './Header'
+// import { useForm } from 'react-hook-form';
+// import {signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
+// import { auth } from '../utils/firebase'; 
+// import { useNavigate } from 'react-router-dom';
+
+// const Login = () => {
+//   const {register,handleSubmit, formState:{errors}} = useForm();
+//   const [authError, setAuthError] = useState('');
+//   const navigate = useNavigate();
+
+//   const onSubmit = async (data) => {
+    
+//     const { email, password } = data;
+//     setAuthError('');
+//     if(!IsSignInForm){
+
+//       createUserWithEmailAndPassword(auth, email,password)
+//       .then((userCredential) => 
+//       {
+//         // Signed up 
+//         const user = userCredential.user;
+
+    
+//         // ...
+//         setAuthError('');
+//       })
+//       .catch((error) => 
+//       {
+//         const errorCode = error.code;
+//         const errorMessage = error.message;
+//         // ..
+
+//         switch (errorCode) {
+//           case 'auth/email-already-in-use':
+//             setAuthError('This email is already registered. Please sign in instead.');
+//             break;
+//           case 'auth/weak-password':
+//             setAuthError('Password is too weak. Please choose a stronger password.');
+//             break;
+//           case 'auth/invalid-email':
+//             setAuthError('Please enter a valid email address.');
+//             break;
+//           default:
+//             setAuthError('Failed to create account. Please try again.');
+//         }
+        
+//       });
+
+//     }else{
+//       signInWithEmailAndPassword(auth, email, password)
+//       .then((userCredential) => {
+//         // Signed in 
+//         const user = userCredential.user;
+//         // ...
+
+
+//         setAuthError('');
+
+//       })
+//       .catch((error) => {
+//         const errorCode = error.code;
+//         const errorMessage = error.message;
+        
+//         switch (errorCode) {
+//           case 'auth/user-not-found':
+//             setAuthError('No account found with this email. Please sign up first.');
+//             break;
+//           case 'auth/wrong-password':
+//             setAuthError('Incorrect password. Please try again.');
+//             break;
+//           case 'auth/invalid-email':
+//             setAuthError('Please enter a valid email address.');
+//             break;
+//           case 'auth/too-many-requests':
+//             setAuthError('Too many failed attempts. Please try again later.');
+//             break;
+//           default:
+//             setAuthError('Failed to sign in. Please check your credentials.');
+//         }
+//       });
+
+
+//     }
+    
+//   }
+
+//   const [IsSignInForm, setIsSignInForm] = useState(true);
+
+//   const handleClick = () => {
+//     setIsSignInForm(!IsSignInForm);
+//   };
+
+//   return (
+//     <div className="min-h-screen relative">
+//       <Header/>
+      
+//       {/* Background Video/Image */}
+//       <div className='absolute inset-0 w-full h-full'>
+//         <video loop autoPlay muted className='w-full h-full object-cover'>
+//           <source src='Bgvideooo.mp4' type='video/mp4'/>
+//         </video>
+//         {/* Dark overlay for better text readability on mobile */}
+//         <div className="absolute inset-0 bg-black bg-opacity-40 md:bg-opacity-0"></div>
+//       </div>
+      
+//       {/* Form Container */}
+//       <div className="relative z-10 flex items-center justify-center min-h-screen px-4 py-8 md:py-20">
+//         <form
+//           onSubmit={handleSubmit(onSubmit)}
+//           className='w-full max-w-md mx-auto bg-gradient-to-b from-[#10002b] to-gray-900 rounded-md p-6 md:p-12 text-white shadow-[0px_0px_2px_1px_rgba(88,46,255,0.5)] opacity-95'
+//         >
+//           <h1 className='text-xl md:text-2xl font-helonik mb-4 md:mb-6 font-semibold text-slate-100 text-center'>
+//               {IsSignInForm ? "Sign In" : "Sign Up"} 
+//           </h1>
+
+//           {/* Name Field - Only for Sign Up */}
+//           {!IsSignInForm && (
+//             <div className="mb-4">
+//               <input 
+//                 {...register("name", { required:true})}
+//                 type='name' 
+//                 placeholder='Full Name' 
+//                 className='w-full p-3 md:p-4 rounded-md font-helonik border border-slate-600 bg-slate-800 text-slate-400 focus:border-purple-400 focus:outline-none transition-colors'
+//               />
+//               {errors.name && (
+//                 <span className='block text-[#bf0603] mt-1 text-sm font-medium'>
+//                   Name is required
+//                 </span>
+//               )}
+//             </div>
+//           )}
+
+//           {/* Email Field */}
+//           <div className="mb-4">
+//             <input 
+//               {...register("email", { 
+//                 required: true, 
+//                 pattern: {
+//                   value: /^[A-Z0-9._%+-]+@[A-Z0-9.]+\.[A-Z]{2,}$/i,
+//                   message: "invalid email address"
+//                 }
+//               })}
+//               type='email'  
+//               placeholder='Email Address' 
+//               className='w-full p-3 md:p-4 rounded-md border border-slate-600 bg-slate-800 text-slate-400 focus:border-purple-400 focus:outline-none transition-colors'
+//             />
+//             {errors.email && (
+//               <span className='block text-[#bf0603] mt-1 text-sm font-medium'>
+//                 {errors.email.message ? "Invalid Email Address" : "Email Address is required"}
+//               </span>
+//             )}
+//           </div>
+
+//           {/* Password Field */}
+//           <div className="mb-4">
+//             <input  
+//               {...register("password", { 
+//                 required: true,
+//                 pattern: {
+//                   value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{8,}$/,
+//                   message: "Invalid Password"
+//                 }
+//               })}
+//               type='password'  
+//               placeholder='Password' 
+//               className='w-full p-3 md:p-4 rounded-md border border-slate-600 bg-slate-800 text-slate-400 focus:border-purple-400 focus:outline-none transition-colors'
+//             />
+//             {errors.password && (
+//               <span className='block text-[#bf0603] mt-1 text-sm font-medium'>
+//                 {errors.password.message ? "Invalid Password" : "Password is required"}
+//               </span>
+//             )}
+//           </div>
+          
+//           {/* Auth Error Display */}
+//           {authError && (
+//             <div className='text-red-500 p-3 mb-4 w-full text-sm bg-red-100 bg-opacity-10 rounded border border-red-400'>
+//               {authError}
+//             </div>
+//           )}
+
+//           {/* Submit Button */}
+//           <button 
+//             type="submit"
+//             className='w-full p-3 md:p-4 rounded-md bg-[#bf0603] font-helonik font-semibold cursor-pointer transition duration-200 hover:bg-[#8d0801] focus:outline-none focus:ring-2 focus:ring-red-400 focus:ring-opacity-50 mb-4'
+//           >
+//             {IsSignInForm ? "Sign In" : "Sign Up"}
+//           </button>
+          
+//           {/* Toggle Form Type */}
+//           <p className='text-slate-400 text-sm text-center'>
+//             {IsSignInForm ? "New to CineGPT? " : "Already a User? "}
+//             <span 
+//               onClick={handleClick} 
+//               className='text-slate-300 font-semibold cursor-pointer underline hover:text-white transition-colors'
+//             > 
+//               {IsSignInForm ? " Sign Up now." : " Sign In Now."}
+//             </span>
+//           </p>
+//         </form>
+//       </div>
+//     </div>
+//   )
+// }
+
+// export default Login;
