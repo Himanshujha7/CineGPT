@@ -17,7 +17,12 @@
 - TMDB API creation - register app and get access token
 - get data from tmdb now playng movies api
  
-
+-created custom to fetch now playing movies
+-created now playing movies store
+-created a custom hook to fetch youtube embed link of a movie
+- planning for main & secondary container
+- update store with trailer video data;
+-embedded the yt video and created home page, with autoplay video in background.
 
 # Features to build
 (Logged out)
