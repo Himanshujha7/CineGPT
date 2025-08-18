@@ -33,7 +33,7 @@ const Login = () => {
           // Force refresh the user to get updated profile
           await user.reload();
           // Manually trigger auth state change with updated user
-          console.log("Updated user after profile update:", auth.currentUser);
+          //console.log("Updated user after profile update:", auth.currentUser);
           
           // Manually update Redux store with correct displayName
           dispatch(addUser({

@@ -58,7 +58,7 @@ export const Dropdown = ({ onSignOut }) => {
   const user = useSelector((store) => store.user);
 
   // Debug: Log user data to console
-  console.log("User from Redux store:", user);
+  //console.log("User from Redux store:", user);
 
 
 
