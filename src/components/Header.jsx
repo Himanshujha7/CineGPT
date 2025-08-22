@@ -55,7 +55,7 @@ const Header = () => {
   }, [])
   return (
     <div className='w-full flex justify-between absolute h-40 px-16 py-8 bg-gradient-to-b from-black z-10'>
-        <h1 className='font-helonik text-[#bf0603] font-black text-4xl cursor-pointer transition-all duration-200 hover:text-[#8d0801] '>CineGPT</h1>
+        <h1 className='font-helonik text-[#bf0603] font-black text-4xl cursor-pointer transition-all duration-200  hover:text-red-800'>CineGPT</h1>
 
         {user && (
           <div className='absolute right-16 top-8'>

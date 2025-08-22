@@ -7,7 +7,8 @@
 
 @theme{
   --font-helonik: Helonik, "sans-serif";
-   
+
+  --drop-shadow-glow: [0px_0px_22px_8px_rgba(255,46,88,1)]
 }
 @utility scrollbar-hide {
   -ms-overflow-style: none;
