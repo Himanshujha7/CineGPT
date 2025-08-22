@@ -7,9 +7,9 @@ const MovieList = ({title, movies}) => {
     return null;
   }
   return (
-    <div className='bg-black'>
+    <div>
         <div className='flex-col  px-4 py-2'>
-            <h1 className='text-2xl py-4 font-semibold text-white hover:text-gray-200 transition duration-200 cursor-pointer'>{title}</h1>
+            <h1 className='text-2xl px-5 py-4 font-semibold text-white hover:text-gray-200 transition duration-200 cursor-pointer'>{title}</h1>
             <div className='flex overflow-x-scroll  scrollbar-hide px-4'>
               {movies.map(movie => <MovieCard key={movie.id} posterPath={movie?.poster_path} />)}
             </div>
