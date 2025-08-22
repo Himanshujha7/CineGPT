@@ -23,6 +23,9 @@
 - planning for main & secondary container
 - update store with trailer video data;
 -embedded the yt video and created home page, with autoplay video in background.
+- build secondary component
+
+
 
 # Features to build
 (Logged out)
