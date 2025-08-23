@@ -54,6 +54,12 @@ const Header = () => {
     // Cleanup function to unsubscribe
     return () => unsubscribe();
   }, [])
+
+
+  const handleGptSearchClick = () => {
+    // i will toggle my gpt here and whenever clicked it will show gpt page or else show browse page 
+    
+  }
   return (
     <div className='w-full flex justify-between absolute h-40 px-16 py-8 bg-gradient-to-b from-black z-10'>
         <h1 className='font-helonik text-[#bf0603] font-black text-4xl cursor-pointer transition-all duration-200  hover:text-red-800'>CineGPT</h1>
@@ -62,7 +68,8 @@ const Header = () => {
           
           <div className='flex absolute right-16 top-8 px-8 gap-8'>
 
-            <button onClick={handleSignout} className='cursor-pointer bg-gray-700 px-4 py-4 rounded-full hover:bg-gray-500 hover:text-gray-200 transition duration-300 text-gray-400 text-xl'><FaMagic/></button>
+            <button onClick={handleGptSearchClick} className='cursor-pointer bg-gray-700 px-4 py-4 rounded-full hover:bg-purple-400 hover:text-gray-100 
+            transition duration-300 text-gray-400 text-xl'><FaMagic/></button>
             <Dropdown className='cursor-pointer' onSignOut={handleSignout}/>
           </div>
         )}
