@@ -5,15 +5,27 @@
   src: url('./fonts/helonik.otf');
 }
 
-@theme{
+@theme {
   --font-helonik: Helonik, "sans-serif";
-
-  --drop-shadow-glow: [0px_0px_22px_8px_rgba(255,46,88,1)]
+  --drop-shadow-glow: 0 0px 22px 8px rgba(255,46,88,1);
 }
-@utility scrollbar-hide {
+
+/* Hide scrollbars globally */
+html, body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-@utility scrollbar-hide::-webkit-scrollbar {
+
+html::-webkit-scrollbar, body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Custom scrollbar hide utility for specific elements */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
