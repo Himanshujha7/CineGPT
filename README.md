@@ -24,7 +24,7 @@
 - update store with trailer video data;
 -embedded the yt video and created home page, with autoplay video in background.
 - build secondary component
-
+- built cards, and lists and created custom hook api to fetch popular, trending, upcoming movies.
 
 
 # Features to build
