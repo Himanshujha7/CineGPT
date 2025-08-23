@@ -8,6 +8,7 @@ import { addUser, removeUser } from '../utils/userSlice';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import Dropdown from './Dropdown';
+import { FaMagic } from "react-icons/fa";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -58,9 +59,11 @@ const Header = () => {
         <h1 className='font-helonik text-[#bf0603] font-black text-4xl cursor-pointer transition-all duration-200  hover:text-red-800'>CineGPT</h1>
 
         {user && (
-          <div className='absolute right-16 top-8'>
-            {/* <button onClick={handleSignout} className='text-white  font-helonik font-semibold text-lg  cursor-pointer transition-all duration-200 z-20 hover:text-[#bf0603]'>Sign Out</button> */}
-            <Dropdown onSignOut={handleSignout}/>
+          
+          <div className='flex absolute right-16 top-8 px-8 gap-8'>
+
+            <button onClick={handleSignout} className='cursor-pointer bg-gray-700 px-4 py-4 rounded-full hover:bg-gray-500 hover:text-gray-200 transition duration-300 text-gray-400 text-xl'><FaMagic/></button>
+            <Dropdown className='cursor-pointer' onSignOut={handleSignout}/>
           </div>
         )}
         

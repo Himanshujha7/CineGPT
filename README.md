@@ -26,6 +26,9 @@
 - build secondary component
 - built cards, and lists and created custom hook api to fetch popular, trending, upcoming movies.
 
+- gpt search feature
+    - button with search button
+
 
 # Features to build
 (Logged out)

@@ -108,7 +108,7 @@ export const Dropdown = ({ onSignOut }) => {
       {/* Profile Picture/Avatar */}
       <button
         onClick={toggleDropdown}
-        className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 border-2 border-transparent hover:border-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent group"
+        className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 border-2 border-transparent hover:border-white/30 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2 focus:ring-offset-transparent group"
         aria-haspopup="true"
         aria-expanded={isOpen}
         aria-label="User menu"

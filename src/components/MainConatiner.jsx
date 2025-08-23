@@ -10,7 +10,7 @@ const MainConatiner = () => {
 
     if(!movies) return;
 
-    const mainMovie = movies[2];
+    const mainMovie = movies[4];
     //console.log(mainMovie);
 
     const {title, overview, id} =mainMovie;
