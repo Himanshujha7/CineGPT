@@ -6,6 +6,8 @@ import SecondaryConatiner from './SecondaryConatiner';
 import usePopularMovies from '../hooks/usePopularMovies';
 import useTopRatedMovies from '../hooks/useTopRatedMovies';
 import useUpcomingMovies from '../hooks/useUpcomingMovies';
+import GptSearch from './GptSearch';
+import { useSelector } from 'react-redux';
 
 const Browse = () => {
 
@@ -13,22 +15,24 @@ const Browse = () => {
   usePopularMovies();
   useTopRatedMovies();
   useUpcomingMovies();
+
+  const showGptSearchView = useSelector(store => store.gpt.showGptSearch);
   
   
 
   return (
     <div className='scrollbar-hide'>
       <Header/>
-      <MainConatiner/>
-      <SecondaryConatiner/>
-      {/*
-          Maincontainer
-            -videobackground
-            -videofile
-          Secondary Container
-            movielist * n
-              cards * n
-      */}
+      {
+        showGptSearchView ? 
+        (<GptSearch/>) 
+        :
+        <>
+          <MainConatiner/>
+          <SecondaryConatiner/>
+        </>
+      }
+      
     </div>
   )
 }

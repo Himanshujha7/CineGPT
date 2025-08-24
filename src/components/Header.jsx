@@ -9,6 +9,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../utils/firebase';
 import Dropdown from './Dropdown';
 import { FaMagic } from "react-icons/fa";
+import { toggleGptSearchView } from '../utils/gptSlice';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -58,7 +59,7 @@ const Header = () => {
 
   const handleGptSearchClick = () => {
     // i will toggle my gpt here and whenever clicked it will show gpt page or else show browse page 
-    
+    dispatch(toggleGptSearchView());
   }
   return (
     <div className='w-full flex justify-between absolute h-40 px-16 py-8 bg-gradient-to-b from-black z-10'>
